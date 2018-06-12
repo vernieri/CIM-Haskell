@@ -4,3 +4,9 @@ Usuario json
 	email  Text
 	UniqueEmail email
 	deriving Show
+	
+Instrumento
+	nome   Text
+	tipo   Text
+	valor  Int
+	deriving Show
