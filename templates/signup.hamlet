@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="enter">
+            <div class="row">
+                <div class="col s12 m8 offset-m2 offset-l1 l10 z-depth-1 white opacity-95 border-circle">
+                    <div class="section">
+                        <h1 class="center-align">Cadastrar
+                        $maybe msg <- maybeMsg
+                            <div class="red lighten-4">
+                                <p>#{msg}</p>
+                    <form action=@{UsuarioR} method="post">
+                        <div class="divider">
+                        <div class="section">
+                            <div class="input-field">
+                                <input id="signup-email" name="email" type="text" class="validate" required>
+                                <label for="signup-email">
+                                    <i class="material-icons">mail
+                                    Email
+                            <div class="input-field">
+                                <input id="signup-username" name="username" type="text" class="validate" required>
+                                <label for="signup-username">
+                                    <i class="material-icons">person
+                                    Nome de Usuário
+                            <div class="input-field">
+                                <input id="signup-password" name="password" type="password" class="validate" required>
+                                <label for="signup-password">
+                                    <i class="material-icons">lock
+                                    Senha
+                            <div class="center-align">
+                                <button class="btn-large center-align orange waves-effect waves-light" type="submit" name="action">Entrar
+                                    <i class="material-icons right">send
+                                <p>Já possui uma conta?
+                                <a href=@{LoginPageR}>Entrar
