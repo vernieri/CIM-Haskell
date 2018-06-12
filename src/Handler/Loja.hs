@@ -82,3 +82,9 @@ getListaLojaR = do
                                                             <input type="submit" value="Comprar!">
         |]
 
+
+formInstrumento :: Form Instrumento
+formInstrumento = renderDivs $ Instrumento
+        <$> areq textField "Nome: " Nothing
+        <*> areq textField "Estado: " Nothing
+        <*> areq intField  "Valor: " Nothing
