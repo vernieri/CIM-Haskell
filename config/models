@@ -1,0 +1,6 @@
+Usuario json
+	username   Text
+	password Text
+	email  Text
+	UniqueEmail email
+	deriving Show
