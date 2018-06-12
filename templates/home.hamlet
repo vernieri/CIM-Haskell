@@ -1,0 +1,6 @@
+<h1>
+    COMPRA de INSTRUMENTOS MUSICAIS (CIM)
+
+<ul>
+    <li> <a href=@{UsuarioR}> Cadastro de Instrumentos
+    <li> <a href=@{ListaUsuarioR}> Listagem de Instrumentos
