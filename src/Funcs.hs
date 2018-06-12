@@ -19,3 +19,6 @@ keyToText key = pack $ show $ fromSqlKey $ key
 
 textToKey :: ToBackendKey SqlBackend record => Text -> Key record
 textToKey idText = toSqlKey (read (unpack idText) :: Int64)
+
+hasRequiredParameters :: [Maybe Text] -> Bool
+hasRequiredParameters params = foldl (\hasReq param -> if isNothing param then hasReq && False else hasReq && True) True params
