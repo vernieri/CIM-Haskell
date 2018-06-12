@@ -11,3 +11,7 @@
 
 /user UsuarioR POST
 /user/#UsuarioId UsuarioByIdR GET
+
+/loja            		ListaLojaR      GET 
+/loja/instrumento 		InstrumentoR 	GET POST
+!/loja/#InstrumentoId   LojaR 			GET POST
