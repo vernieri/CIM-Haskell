@@ -64,3 +64,10 @@ getUserLogoutR :: Handler Value
 getUserLogoutR = do
     deleteSession "ID"
     redirect LoginPageR
+
+getLoginPageR :: Handler Html
+getLoginPageR = do
+    maybeMsg <- getMessage
+    pc <- return $ $(widgetFile "login")
+    defaultLayout $ do
+        $(widgetFile "layoutlogin")
