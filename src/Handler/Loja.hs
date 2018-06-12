@@ -88,3 +88,68 @@ formInstrumento = renderDivs $ Instrumento
         <$> areq textField "Nome: " Nothing
         <*> areq textField "Estado: " Nothing
         <*> areq intField  "Valor: " Nothing
+        
+getInstrumentoR :: Handler Html
+getInstrumentoR = do
+    (widget,enctype) <- generateFormPost formInstrumento
+    defaultLayout $ do
+        toWidget $(luciusFile "templates/instru.lucius")        
+        [whamlet|
+
+            <div class="container">
+                <div class="enter">
+                        <div class="row">
+                            <div class="col s12 m8 offset-m2 offset-l1 l10 z-depth-1 white opacity-95 border-circle">
+                                <div class="section">
+                                    <h1 class="center-align">Incluir Instrumento
+                                        <div class="red lighten-4">
+                                <form action=@{InstrumentoR} method="post">
+                                    ^{widget}
+                                    <input type="submit" value="OK">                                
+                                    <div class="divider">
+                                    <div class="section">
+                                        <div class="input-field">
+  
+                                        <div class="input-field">
+                                                
+                                        <div class="input-field">
+       
+                                        <div class="center-align">
+
+                                            <p>Deseja checar os instrumentos disponiveis?
+                                            <a href=@{ListaLojaR}>Checar
+            <footer class="page-footer orange lighten-4">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="black-text">CIM
+                        <p class="black-text">CIM Compra de Instrumentos Musicais
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="black-text">Grupo
+                        <ul>
+                            <li>
+                                <a class="black-text"> Joao Victor Vernieri Mendes
+                            <li>
+                                <a class="black-text"> Gabriel Fernando Moraes
+
+                <div class="footer-copyright grey lighten-4">
+                    <p class="black-text"> 2018 CIM                                            
+              
+
+        |]
+
+postInstrumentoR :: Handler Html
+postInstrumentoR = do
+    -- LEIO OS PARAMETROS DO FORM
+    ((res,_),_) <- runFormPost formInstrumento
+    case res of
+        FormSuccess instrumento -> do
+
+            tid <- runDB $ insert instrumento 
+
+             
+            defaultLayout [whamlet|
+                Instrumento #{fromSqlKey tid} inserido com sucesso!
+            |]
+        _ -> redirect ListaLojaR
+
+        
