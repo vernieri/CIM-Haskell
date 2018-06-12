@@ -1,0 +1,13 @@
+/static StaticR Static appStatic
+
+/favicon.ico FaviconR GET
+/robots.txt RobotsR GET
+
+/       LoginPageR 	GET
+
+/signup SignupPageR GET
+/login UserLoginR POST
+/logout UserLogoutR GET
+
+/user UsuarioR POST
+/user/#UsuarioId UsuarioByIdR GET
