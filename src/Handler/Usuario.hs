@@ -78,3 +78,10 @@ getSignupPageR = do
     pc <- return $ $(widgetFile "signup")
     defaultLayout $ do
         $(widgetFile "layoutlogin")
+
+getUsuarioByIdR :: UsuarioId -> Handler Value
+getUsuarioByIdR usuarioId = do
+    usuario <- runDB $ get404 usuarioId 
+    username <- return $ usuarioUsername usuario
+    email <- return $ usuarioEmail usuario 
+    sendStatusJSON ok200 (object["user" .= (username, email)])    
