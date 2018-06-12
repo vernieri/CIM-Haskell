@@ -34,3 +34,29 @@ postUsuarioR = do
                 Nothing -> do
                     setMessage $ toHtml ("Ja existe um usuario com este email" :: String)
                     redirect SignupPageR
+                    
+postUserLoginR :: Handler Value
+postUserLoginR = do
+    maybeEmail<- lookupPostParam "email"
+    maybePassword <- lookupPostParam "password"
+    hasReqParam <- return $ hasRequiredParameters [maybeEmail, maybePassword]
+    case hasReqParam of
+        False -> do
+            invalidArgs $ [(pack "Formato Valido")]
+        True -> do
+            maybeUsario <- runDB $ getBy $ UniqueEmail $ fromJust maybeEmail
+            case maybeUsario of
+                Just usuario -> do
+                    --loginAttempt <- return $ validatePassword (BS.pack $ unpack $ usuarioPassword $ entityVal usuario) (BS.pack $ unpack $ fromJust maybePassword)
+                    loginAttempt <- return $ validatePassword (BS.pack $ unpack $ usuarioPassword $ entityVal usuario) (BS.pack $ unpack $ fromJust maybePassword)
+                    case loginAttempt of                    
+                        True -> do
+                            setSession "ID" $ keyToText $ entityKey usuario
+                            redirect ListaLojaR
+                        _ -> do
+                            setMessage $ toHtml ("Login nao autorizado" :: String)
+                            redirect LoginPageR
+                _ -> do
+                    setMessage $ toHtml ("login nao autorizado" :: String)
+                    redirect LoginPageR
+                    
