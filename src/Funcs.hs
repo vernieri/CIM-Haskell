@@ -1,0 +1,18 @@
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE QuasiQuotes #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE FlexibleContexts #-}
+module Funcs where
+
+import Yesod
+--import Foundation
+import Import
+import Database.Persist.Postgresql
+import Prelude (read, foldl)
+--import Network.HTTP.Types.Status
+
+keyToText ::  ToBackendKey SqlBackend record => Key record -> Text
+keyToText key = pack $ show $ fromSqlKey $ key
