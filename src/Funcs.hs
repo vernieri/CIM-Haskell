@@ -16,3 +16,6 @@ import Prelude (read, foldl)
 
 keyToText ::  ToBackendKey SqlBackend record => Key record -> Text
 keyToText key = pack $ show $ fromSqlKey $ key
+
+textToKey :: ToBackendKey SqlBackend record => Text -> Key record
+textToKey idText = toSqlKey (read (unpack idText) :: Int64)
