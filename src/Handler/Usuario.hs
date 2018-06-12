@@ -60,3 +60,7 @@ postUserLoginR = do
                     setMessage $ toHtml ("login nao autorizado" :: String)
                     redirect LoginPageR
                     
+getUserLogoutR :: Handler Value
+getUserLogoutR = do
+    deleteSession "ID"
+    redirect LoginPageR
