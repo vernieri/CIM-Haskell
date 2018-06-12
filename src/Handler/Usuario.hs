@@ -71,3 +71,10 @@ getLoginPageR = do
     pc <- return $ $(widgetFile "login")
     defaultLayout $ do
         $(widgetFile "layoutlogin")
+        
+getSignupPageR :: Handler Html
+getSignupPageR = do
+    maybeMsg <- getMessage
+    pc <- return $ $(widgetFile "signup")
+    defaultLayout $ do
+        $(widgetFile "layoutlogin")
