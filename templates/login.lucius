@@ -1,0 +1,23 @@
+main{
+    background-position: center; 
+    background-size: cover;
+    background-color: orange;
+}
+
+.enter{
+    padding-top: 3.0rem;
+    padding-bottom: 3.0rem
+    background-color: blue;
+
+}
+
+.border-circle{
+    background-color: black;
+
+    border-radius: 10px;
+    border: 1px solid orange;
+}
+
+.opacity-95{
+    opacity: 0.85;
+}
