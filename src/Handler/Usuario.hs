@@ -67,26 +67,28 @@ getUserLogoutR = do
 
 getLoginPageR :: Handler Html
 getLoginPageR = do
+    maybeMsg <- getMessage
+    pc <- return $ $(widgetFile "login")
+    defaultLayout $ do
         addStylesheetRemote "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
         addStylesheetRemote "https://fonts.googleapis.com/icon?family=Material+Icons"
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"
         setTitle "CIM"
-    maybeMsg <- getMessage
-    pc <- return $ $(widgetFile "login")
-    defaultLayout $ do
+
         $(widgetFile "layoutlogin")
         
 getSignupPageR :: Handler Html
 getSignupPageR = do
+    maybeMsg <- getMessage
+    pc <- return $ $(widgetFile "signup")
+    defaultLayout $ do
         addStylesheetRemote "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
         addStylesheetRemote "https://fonts.googleapis.com/icon?family=Material+Icons"
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"
         setTitle "CIM"
-    maybeMsg <- getMessage
-    pc <- return $ $(widgetFile "signup")
-    defaultLayout $ do
+
         $(widgetFile "layoutlogin")
 
 getUsuarioByIdR :: UsuarioId -> Handler Value
