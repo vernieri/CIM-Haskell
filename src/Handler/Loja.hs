@@ -21,7 +21,7 @@ getLojaR tid = do
                 Estado: #{show $ instrumentoTipo instrumento}
             <h2>
                 Valor: #{instrumentoValor instrumento}
-              
+            
         |]
 
 postLojaR :: InstrumentoId -> Handler Html
@@ -39,7 +39,6 @@ getListaLojaR = do
         addScriptRemote "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.css"
         setTitle "CIM"        
         toWidget $(luciusFile "templates/rapidao.lucius")        
-
         [whamlet|
 
             <div class="container">
@@ -158,5 +157,4 @@ postInstrumentoR = do
                 Instrumento #{fromSqlKey tid} inserido com sucesso!
             |]
         _ -> redirect ListaLojaR
-
-        
+ 
